@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>24-Maktab | Premium Educational Platform</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+
+<body>
+    <!-- Pull to Refresh Indicator -->
+    <div id="pull-refresh" class="pull-refresh">
+        <i class="fa-solid fa-arrows-rotate"></i>
+        <span>Yangilanmoqda...</span>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loader">
+            <div class="loader-text">Yuklanmoqda...</div>
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-screen hidden">
+        <div class="login-container">
+            <div class="login-header">
+                <i class="fa-solid fa-user-shield login-icon"></i>
+                <h2>Xush kelibsiz</h2>
+                <p>Tizimga kirish uchun ma'lumotlarni kiriting</p>
+            </div>
+            <div class="login-form">
+                <div class="input-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="username" placeholder="Login">
+                </div>
+                <div class="input-group">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="password" placeholder="Parol">
+                </div>
+                <button id="login-submit" class="login-btn" onclick="handleLogin()">Kirish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Navbar -->
+    <nav class="top-navbar hidden">
+        <div class="nav-logo">24-Maktab</div>
+        <div class="nav-right">
+            <div id="user-balance" class="user-balance" style="margin-right: 15px; display: flex; align-items: center; gap: 5px; background: rgba(34, 197, 94, 0.2); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(34, 197, 94, 0.3);">
+                <i class="fa-solid fa-coins" style="color: #22c55e;"></i>
+                <span id="header-score" style="font-weight: 600; font-size: 0.9rem; color: #22c55e;">0</span>
+            </div>
+            <button id="theme-toggle" class="nav-profile-btn" onclick="toggleTheme()" style="margin-right: 15px;">
+                <i class="fa-solid fa-moon" id="theme-icon"></i>
+            </button>
+            <button id="notif-btn" class="nav-profile-btn" onclick="navigateTo('notifications')" style="margin-right: 15px; position: relative;">
+                <i class="fa-solid fa-bell"></i>
+                <span id="notif-badge" class="notif-badge hidden">0</span>
+            </button>
+            <button id="profile-btn" class="nav-profile-btn" onclick="navigateTo('profile')">
+                <i class="fa-solid fa-user-circle"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="app-content">
+        <!-- Sections will be injected here -->
+    </main>
+
+    <nav id="bottom-navbar" class="bottom-navbar hidden">
+        <!-- Will be injected dynamically -->
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

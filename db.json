@@ -1,0 +1,209 @@
+{
+  "users": [
+    {
+      "user": "admin",
+      "pass": "2024",
+      "role": "admin",
+      "name": "Tizim Adminstratori",
+      "class": "Boshqaruv",
+      "score": 0,
+      "testsTaken": 0
+    },
+    {
+      "name": "shohjahon shahriyev",
+      "class": "3 kurs",
+      "user": "shohjahon",
+      "pass": "123",
+      "role": "teacher",
+      "score": 0,
+      "testsTaken": 2
+    }
+  ],
+  "appData": {
+    "news": [
+      {
+        "id": 1776875609657,
+        "title": "yangi sayt yaratildi ",
+        "text": "5",
+        "tag": "Yangilik",
+        "image": "/uploads/1776875609348.jpg",
+        "views": 0
+      }
+    ],
+    "subjects": [
+      {
+        "id": "math",
+        "name": "Matematika",
+        "icon": "fa-calculator",
+        "questions": [
+          {
+            "q": "20+20*5=?",
+            "options": [
+              "bilmayman",
+              "33",
+              "120",
+              "125"
+            ],
+            "correct": 2
+          }
+        ]
+      },
+      {
+        "id": "physics",
+        "name": "Fizika",
+        "icon": "fa-atom",
+        "questions": []
+      },
+      {
+        "id": "history",
+        "name": "Tarix",
+        "icon": "fa-landmark",
+        "questions": []
+      },
+      {
+        "id": "english",
+        "name": "Ingliz tili",
+        "icon": "fa-language",
+        "questions": []
+      }
+    ],
+    "gifts": [],
+    "ranking": [
+      {
+        "name": "Abbos Aliev",
+        "score": 154
+      },
+      {
+        "name": "durdona shaxriyev",
+        "score": 1
+      },
+      {
+        "name": "shohjahon shahriyev",
+        "score": 0
+      }
+    ],
+    "director": {
+      "name": "Akbar Tohirov",
+      "role": "Maktab maslahatchisi",
+      "msg": "Assalomu alaykum, aziz o'quvchilar! Bilim olishdan aslo to'xtamang. Bizning platforma sizga yordam beradi.",
+      "image": "school_director_1776859699524.png"
+    },
+    "notifications": [
+      {
+        "id": 1776875758358,
+        "text": "🎁 SOVG'A ALMASHILDI: shohjahon shahriyev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776875726982,
+        "text": "✅ TEST YAKUNLANDI: shohjahon shahriyev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776875725310,
+        "text": "📝 TEST BOSHLANDI: shohjahon shahriyev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776874782334,
+        "text": "ha ",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776874662072,
+        "text": "🎁 SOVG'A ALMASHILDI: shohjahon shahriyev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776874518530,
+        "text": "✅ TEST YAKUNLANDI: shohjahon shahriyev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776874517222,
+        "text": "📝 TEST BOSHLANDI: shohjahon shahriyev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873975160,
+        "text": "✅ TEST YAKUNLANDI: durdona shaxriyev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873973824,
+        "text": "📝 TEST BOSHLANDI: durdona shaxriyev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873394075,
+        "text": "✅ TEST YAKUNLANDI: Abbos Aliev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873392740,
+        "text": "📝 TEST BOSHLANDI: Abbos Aliev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873102785,
+        "text": "🎁 SOVG'A ALMASHILDI: Abbos Aliev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873059367,
+        "text": "✅ TEST YAKUNLANDI: Abbos Aliev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776873056095,
+        "text": "📝 TEST BOSHLANDI: Abbos Aliev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776872898321,
+        "text": "✅ TEST YAKUNLANDI: Abbos Aliev - Matematika: 1/1 natija ko'rsatdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776872894766,
+        "text": "📝 TEST BOSHLANDI: Abbos Aliev o'quvchisi Matematika fanidan test yechishni boshladi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776872515409,
+        "text": "🎁 SOVG'A ALMASHILDI: Abbos Aliev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776872509082,
+        "text": "🎁 SOVG'A ALMASHILDI: Abbos Aliev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      },
+      {
+        "id": 1776872145852,
+        "text": "🎁 SOVG'A ALMASHILDI: Abbos Aliev o'quvchisi o'zining 1 ballini \"uzum\" sovg'asiga almashtirdi.",
+        "time": "Hozir",
+        "read": false
+      }
+    ],
+    "visitors": 2158
+  }
+}
