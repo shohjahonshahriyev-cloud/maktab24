@@ -5,12 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>24-Maktab | Premium Educational Platform</title>
+
+    <!-- PWA & Mobile Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="24-Maktab">
+    <meta name="apple-mobile-web-app-title" content="24-Maktab">
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="app.js" defer></script>
 </head>
 
 <body>
@@ -22,46 +36,138 @@
 
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
-        <div class="loader">
-            <div class="loader-text">Yuklanmoqda...</div>
-            <div class="loader-circle"></div>
+        <div class="loader-container">
+            <div class="loader-logo">
+                <img src="logo_new.png" alt="24-Maktab">
+            </div>
+            <div class="loader-progress-box">
+                <svg class="progress-ring" width="120" height="120">
+                    <circle class="progress-ring__circle-bg" stroke="#f1f5f9" stroke-width="6" fill="transparent" r="54" cx="60" cy="60"/>
+                    <circle class="progress-ring__circle" stroke="url(#loader-gradient)" stroke-width="6" stroke-linecap="round" fill="transparent" r="54" cx="60" cy="60"/>
+                    <defs>
+                        <linearGradient id="loader-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#6366f1" />
+                            <stop offset="100%" stop-color="#a855f7" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="loader-percentage"><span id="loading-percent">0</span>%</div>
+            </div>
+            <div class="loader-status">Tizim yuklanmoqda...</div>
         </div>
     </div>
 
-    <!-- Login Screen -->
-    <div id="login-screen" class="login-screen hidden">
-        <div class="login-container">
-            <div class="login-header">
-                <i class="fa-solid fa-user-shield login-icon"></i>
-                <h2>Xush kelibsiz</h2>
-                <p>Tizimga kirish uchun ma'lumotlarni kiriting</p>
+    <!-- Welcome Screen -->
+    <div id="welcome-screen" class="welcome-screen-v3 hidden">
+        <div class="welcome-bg-v3">
+            <img src="school_building_welcome_1777285404841.png" alt="School">
+            <div class="welcome-overlay-v3"></div>
+        </div>
+
+        <div class="welcome-content-v3">
+            <div class="welcome-text-v3">
+                <h1 class="brand-title-v3">24-<span>Maktab</span></h1>
+                <p class="brand-subtitle-v3">Ta'limni birga rivojlantiramiz</p>
             </div>
-            <div class="login-form">
-                <div class="input-group">
+
+            <div class="welcome-features-v3">
+                <div class="feature-col-v3">
+                    <div class="feature-icon-v3 blue"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="feature-name-v3">Oson va qulay</div>
+                    <div class="feature-desc-v3"></div>
+                </div>
+                <div class="feature-col-v3">
+                    <div class="feature-icon-v3 green"><i class="fa-solid fa-circle-check"></i></div>
+                    <div class="feature-name-v3">Xavfsiz</div>
+                    <div class="feature-desc-v3"></div>
+                </div>
+                <div class="feature-col-v3">
+                    <div class="feature-icon-v3 purple"><i class="fa-solid fa-chart-simple"></i></div>
+                    <div class="feature-name-v3">Rivojlanish</div>
+                    <div class="feature-desc-v3"></div>
+                </div>
+            </div>
+
+            <div class="welcome-actions-v3">
+                <button class="btn-login-v3" onclick="showLoginScreenV2()">
+                    Kirish <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn-reg-v3"
+                    onclick="showCustomAlert('Ro\'yxatdan o\'tish hozirda faqat administrator orqali amalga oshiriladi.')">
+                    Ro'yxatdan o'tish
+                </button>
+            </div>
+
+            <div class="pagination-dots-v3">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Screen V2 -->
+    <div id="login-screen-v2" class="login-screen-new hidden">
+        <div class="login-header-v2">
+            <i class="fa-solid fa-arrow-left back-icon-v2" onclick="showWelcomeScreen()"></i>
+            <div class="lang-selector-v2">
+                O'zbekcha <i class="fa-solid fa-chevron-down"></i>
+            </div>
+        </div>
+
+        <div class="login-form-container-v2">
+            <div class="login-icon-v2">
+                <img src="login_cap_icon_1777282237815.png" alt="Login Icon">
+            </div>
+
+            <h2 class="login-title-v2">Kirish</h2>
+            <p class="login-subtitle-v2">Hisobingizga kirish uchun ma'lumotlaringizni kiriting</p>
+
+            <div class="login-inputs-v2">
+                <label>Login</label>
+                <div class="input-wrapper-v2">
                     <i class="fa-solid fa-user"></i>
-                    <input type="text" id="username" placeholder="Login">
+                    <input type="text" id="username-v2" placeholder="Loginni kiriting">
                 </div>
-                <div class="input-group">
+
+                <label>Parol</label>
+                <div class="input-wrapper-v2">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" placeholder="Parol">
+                    <input type="password" id="password-v2" placeholder="Parolingizni kiriting">
+                    <i class="fa-solid fa-eye-slash toggle-pass-v2" onclick="togglePasswordV2()"></i>
                 </div>
-                <button id="login-submit" class="login-btn" onclick="handleLogin()">Kirish</button>
             </div>
+
+            <div class="login-extra-v2">
+                <label class="checkbox-container-v2">
+                    <input type="checkbox" id="remember-me-v2" checked>
+                    <span class="checkmark-v2"></span>
+                    Meni eslab qolish
+                </label>
+                <a href="#" class="forgot-pass-v2" onclick="showForgotPassMessage(event)">Parolni unutdingizmi?</a>
+            </div>
+
+            <button class="btn-primary-new" onclick="handleLoginV2()">Kirish</button>
         </div>
     </div>
 
     <!-- Top Navbar -->
     <nav class="top-navbar hidden">
-        <div class="nav-logo">24-Maktab</div>
+        <div class="nav-logo"
+            style="display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.5px;">
+            <img src="logo.png" alt="Logo"
+                style="height: 32px; width: 32px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 10px rgba(99,102,241,0.3);">
+            <span
+                style="background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">24-Maktab</span>
+        </div>
         <div class="nav-right">
-            <div id="user-balance" class="user-balance" style="margin-right: 15px; display: flex; align-items: center; gap: 5px; background: rgba(34, 197, 94, 0.2); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(34, 197, 94, 0.3);">
+            <div id="user-balance" class="user-balance"
+                style="margin-right: 15px; display: flex; align-items: center; gap: 5px; background: rgba(34, 197, 94, 0.2); padding: 5px 12px; border-radius: 20px; border: 1px solid rgba(34, 197, 94, 0.3);">
                 <i class="fa-solid fa-coins" style="color: #22c55e;"></i>
                 <span id="header-score" style="font-weight: 600; font-size: 0.9rem; color: #22c55e;">0</span>
             </div>
-            <button id="theme-toggle" class="nav-profile-btn" onclick="toggleTheme()" style="margin-right: 15px;">
-                <i class="fa-solid fa-moon" id="theme-icon"></i>
-            </button>
-            <button id="notif-btn" class="nav-profile-btn" onclick="navigateTo('notifications')" style="margin-right: 15px; position: relative;">
+            <button id="notif-btn" class="nav-profile-btn" onclick="navigateTo('notifications')"
+                style="margin-right: 15px; position: relative;">
                 <i class="fa-solid fa-bell"></i>
                 <span id="notif-badge" class="notif-badge hidden">0</span>
             </button>
@@ -80,7 +186,36 @@
         <!-- Will be injected dynamically -->
     </nav>
 
-    <script src="app.js"></script>
+    <!-- Custom Modal -->
+    <div id="custom-modal" class="modal-overlay hidden">
+        <div class="glass-card modal-content">
+            <h3 id="modal-title">Tasdiqlash</h3>
+            <p id="modal-text"></p>
+            <div class="modal-actions">
+                <button id="modal-cancel" class="modal-btn cancel">Yo'q</button>
+                <button id="modal-confirm" class="modal-btn confirm">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Prompt Modal (Specific for iOS/PWA) -->
+    <div id="notif-prompt" class="modal-overlay hidden">
+        <div class="modal-content glass-card" style="text-align: center; padding: 30px; max-width: 320px;">
+            <div style="font-size: 3rem; margin-bottom: 20px;">🔔</div>
+            <h3 style="margin-bottom: 15px;">Bildirishnomalarni yoqing</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 25px;">
+                Yangi baholar va maktab yangiliklaridan birinchilardan bo'lib xabardor bo'lish uchun bildirishnomalarga ruxsat bering. 
+                <br><br>
+                <small>iPhone'da ovozli xabarlar ishlashi uchun bu juda muhim.</small>
+            </p>
+            <button onclick="enableNotificationsUI()" class="buy-btn" style="width: 100%; padding: 15px; font-size: 1rem; border-radius: 12px;">
+                Ruxsat berish va Yoqish
+            </button>
+            <button onclick="closeNotifPrompt()" style="background: none; border: none; color: var(--text-muted); margin-top: 15px; cursor: pointer; font-size: 0.9rem;">
+                Keyinroq
+            </button>
+        </div>
+    </div>
 </body>
 
 </html>
